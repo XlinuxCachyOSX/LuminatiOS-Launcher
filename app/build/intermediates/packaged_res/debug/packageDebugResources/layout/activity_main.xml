@@ -10,6 +10,59 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <!-- Clock + Date -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="48dp"
+            android:paddingBottom="16dp">
+
+            <TextView
+                android:id="@+id/clock_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="64sp"
+                android:textColor="@android:color/white"
+                android:fontFamily="sans-serif-thin"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/date_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:textColor="#CCFFFFFF"
+                android:layout_marginTop="4dp" />
+
+        </LinearLayout>
+
+        <!-- Search bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:id="@+id/search_text"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:background="@drawable/search_background"
+                android:gravity="center_vertical|start"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Cerca app..."
+                android:textColor="#AAFFFFFF"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <!-- Workspace -->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/workspace"
             android:layout_width="match_parent"
@@ -20,6 +73,7 @@
             android:paddingBottom="8dp"
             android:scrollbars="none" />
 
+        <!-- Hotseat -->
         <LinearLayout
             android:id="@+id/hotseat"
             android:layout_width="match_parent"
@@ -27,8 +81,8 @@
             android:orientation="horizontal"
             android:gravity="center"
             android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:background="#80000000" />
+            android:paddingBottom="16dp"
+            android:background="#40000000" />
 
     </LinearLayout>
 

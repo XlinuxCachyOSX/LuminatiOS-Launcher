@@ -6,13 +6,14 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ResolveInfo
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.GestureDetector
 import android.view.MotionEvent
 import android.view.View
-import android.view.WindowInsets
-import android.view.WindowInsetsController
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -29,29 +30,47 @@ class MainActivity : Activity() {
     private lateinit var workspaceRecycler: RecyclerView
     private lateinit var hotseatContainer: LinearLayout
     private lateinit var adapter: AppAdapter
+    private lateinit var clockText: TextView
+    private lateinit var searchText: TextView
 
     private val allApps = mutableListOf<ResolveInfo>()
     private val favorites = mutableSetOf<String>()
     private val prefs by lazy { getSharedPreferences(PREFS_NAME, MODE_PRIVATE) }
-
+    private val clockHandler = Handler(Looper.getMainLooper())
     private lateinit var gestureDetector: GestureDetector
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initImmersiveSystemUi()
-        setupWallpaperBackground()
-        initWorkspace()
-        initHotseat()
-        initGestureDetector()
-        loadApps()
-        loadFavorites()
+        try {
+            initImmersiveSystemUi()
+            setupWallpaperBackground()
+            initWorkspace()
+            initHotseat()
+            initClock()
+            initSearch()
+            initGestureDetector()
+            loadApps()
+            loadFavorites()
+        } catch (e: Exception) {
+            // Graceful degradation
+        }
     }
 
     override fun onResume() {
         super.onResume()
-        refreshHotseat()
-        loadApps()
+        try {
+            refreshHotseat()
+            loadApps()
+            updateClock()
+        } catch (e: Exception) {
+            // Ignore
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        clockHandler.removeCallbacksAndMessages(null)
     }
 
     // ------------------------------------------------------------------
@@ -74,9 +93,51 @@ class MainActivity : Activity() {
             val wallpaper = wallpaperManager.drawable
             if (wallpaper != null) {
                 root.background = wallpaper
+                // Add scrim for readability
+                root.foreground = android.graphics.drawable.ColorDrawable(Color.argb(80, 0, 0, 0))
             }
         } catch (e: Exception) {
-            // Fallback to solid color
+            root.setBackgroundColor(Color.parseColor("#1a1a2e"))
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Clock
+    // ------------------------------------------------------------------
+
+    private fun initClock() {
+        clockText = findViewById(R.id.clock_text)
+        updateClock()
+        clockHandler.postDelayed(object : Runnable {
+            override fun run() {
+                updateClock()
+                clockHandler.postDelayed(this, 60000)
+            }
+        }, 60000)
+    }
+
+    private fun updateClock() {
+        try {
+            val cal = java.util.Calendar.getInstance()
+            val hour = cal.get(java.util.Calendar.HOUR_OF_DAY)
+            val minute = cal.get(java.util.Calendar.MINUTE)
+            val day = cal.get(java.util.Calendar.DAY_OF_MONTH)
+            val month = cal.getDisplayName(java.util.Calendar.MONTH, java.util.Calendar.SHORT, java.util.Locale.getDefault())
+            clockText.text = String.format("%02d:%02d", hour, minute)
+            findViewById<TextView>(R.id.date_text)?.text = String.format("%d %s", day, month ?: "")
+        } catch (e: Exception) {
+            // Ignore
+        }
+    }
+
+    // ------------------------------------------------------------------
+    // Search
+    // ------------------------------------------------------------------
+
+    private fun initSearch() {
+        searchText = findViewById(R.id.search_text)
+        searchText.setOnClickListener {
+            startActivity(Intent(this, AllAppsActivity::class.java))
         }
     }
 
@@ -95,9 +156,13 @@ class MainActivity : Activity() {
     }
 
     private fun loadApps() {
-        allApps.clear()
-        allApps.addAll(AppCatalog.collectLaunchableApps(this))
-        adapter.submitList(allApps.toList())
+        try {
+            allApps.clear()
+            allApps.addAll(AppCatalog.collectLaunchableApps(this))
+            adapter.submitList(allApps.toList())
+        } catch (e: Exception) {
+            // Show empty state
+        }
     }
 
     // ------------------------------------------------------------------
@@ -111,7 +176,6 @@ class MainActivity : Activity() {
 
     private fun refreshHotseat() {
         hotseatContainer.removeAllViews()
-        hotseatContainer.addView(createAllAppsIcon())
         for (key in favorites) {
             val app = findApp(key)
             if (app != null) {
@@ -123,31 +187,9 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun createAllAppsIcon(): LinearLayout {
-        val density = resources.displayMetrics.density
-        val iconSizePx = (48 * density).toInt()
-
-        val row = LinearLayout(this).apply {
-            orientation = LinearLayout.VERTICAL
-            gravity = android.view.Gravity.CENTER
-            setPadding((4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt())
-        }
-
-        val icon = ImageView(this).apply {
-            layoutParams = LinearLayout.LayoutParams(iconSizePx, iconSizePx)
-            scaleType = ImageView.ScaleType.CENTER_INSIDE
-        }
-        icon.setImageDrawable(getDrawable(R.drawable.ic_all_apps))
-
-        row.setOnClickListener { startActivity(Intent(this, AllAppsActivity::class.java)) }
-        row.addView(icon)
-
-        return row
-    }
-
     private fun createHotseatIcon(app: ResolveInfo): LinearLayout {
         val density = resources.displayMetrics.density
-        val iconSizePx = (48 * density).toInt()
+        val iconSizePx = (44 * density).toInt()
 
         val row = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -159,7 +201,11 @@ class MainActivity : Activity() {
             layoutParams = LinearLayout.LayoutParams(iconSizePx, iconSizePx)
             scaleType = ImageView.ScaleType.CENTER_INSIDE
         }
-        icon.setImageDrawable(app.activityInfo?.loadIcon(packageManager))
+        try {
+            icon.setImageDrawable(app.activityInfo?.loadIcon(packageManager))
+        } catch (e: Exception) {
+            // Ignore
+        }
 
         row.setOnClickListener { launchApp(app) }
         row.setOnLongClickListener { toggleFavorite(app); true }
@@ -174,7 +220,11 @@ class MainActivity : Activity() {
 
     private fun loadFavorites() {
         favorites.clear()
-        favorites.addAll(prefs.getStringSet(KEY_FAVORITES, emptySet()).orEmpty())
+        try {
+            favorites.addAll(prefs.getStringSet(KEY_FAVORITES, emptySet()).orEmpty())
+        } catch (e: Exception) {
+            // Ignore
+        }
         refreshHotseat()
     }
 
