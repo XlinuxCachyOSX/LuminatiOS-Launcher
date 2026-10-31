@@ -4,8 +4,11 @@ color launcher_primary
 drawable ic_all_apps
 drawable ic_launcher_foreground
 id all_apps
+id back_button
 id hotseat
 id hotseat_icon
+id root_layout
+id search
 id shortcut_icon
 id shortcut_label
 id widget_icon

@@ -6,30 +6,44 @@ import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ResolveInfo
+import android.graphics.drawable.Drawable
 import android.os.Bundle
-import android.view.Gravity
-import android.widget.GridView
+import android.view.GestureDetector
+import android.view.MotionEvent
+import android.view.View
+import android.view.WindowInsets
+import android.view.WindowInsetsController
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.luminati.launcher.R
+import android.app.WallpaperManager
 
 class MainActivity : Activity() {
 
-    private lateinit var workspaceGrid: GridView
+    private lateinit var workspaceRecycler: RecyclerView
     private lateinit var hotseatContainer: LinearLayout
+    private lateinit var adapter: AppAdapter
 
     private val allApps = mutableListOf<ResolveInfo>()
     private val favorites = mutableSetOf<String>()
     private val prefs by lazy { getSharedPreferences(PREFS_NAME, MODE_PRIVATE) }
 
+    private lateinit var gestureDetector: GestureDetector
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initImmersiveSystemUi()
+        setupWallpaperBackground()
         initWorkspace()
         initHotseat()
+        initGestureDetector()
         loadApps()
         loadFavorites()
     }
@@ -37,10 +51,11 @@ class MainActivity : Activity() {
     override fun onResume() {
         super.onResume()
         refreshHotseat()
+        loadApps()
     }
 
     // ------------------------------------------------------------------
-    // System UI
+    // System UI / Wallpaper
     // ------------------------------------------------------------------
 
     private fun initImmersiveSystemUi() {
@@ -52,35 +67,37 @@ class MainActivity : Activity() {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Workspace
-    // ------------------------------------------------------------------
-
-    private fun initWorkspace() {
-        workspaceGrid = findViewById(R.id.workspace)
-        workspaceGrid.numColumns = 4
-        workspaceGrid.stretchMode = GridView.STRETCH_COLUMN_WIDTH
-        workspaceGrid.columnWidth = computeColumnWidth()
-        workspaceGrid.adapter = AppGridAdapter(this, allApps)
-        workspaceGrid.setOnItemClickListener { _, _, position, _ ->
-            launchApp(allApps[position])
-        }
-        workspaceGrid.setOnItemLongClickListener { _, _, position, _ ->
-            toggleFavorite(allApps[position])
-            true
+    private fun setupWallpaperBackground() {
+        val root = findViewById<View>(R.id.root_layout)
+        try {
+            val wallpaperManager = WallpaperManager.getInstance(this)
+            val wallpaper = wallpaperManager.drawable
+            if (wallpaper != null) {
+                root.background = wallpaper
+            }
+        } catch (e: Exception) {
+            // Fallback to solid color
         }
     }
 
-    private fun computeColumnWidth(): Int {
-        val density = resources.displayMetrics.density
-        val availableWidth = resources.displayMetrics.widthPixels - 16 * density
-        return (availableWidth / 4).toInt()
+    // ------------------------------------------------------------------
+    // Workspace (RecyclerView)
+    // ------------------------------------------------------------------
+
+    private fun initWorkspace() {
+        workspaceRecycler = findViewById(R.id.workspace)
+        adapter = AppAdapter(this, ::launchApp, ::toggleFavorite)
+        workspaceRecycler.layoutManager = GridLayoutManager(this, 4)
+        workspaceRecycler.adapter = adapter
+        workspaceRecycler.itemAnimator = DefaultItemAnimator()
+        workspaceRecycler.setHasFixedSize(true)
+        workspaceRecycler.setItemViewCacheSize(20)
     }
 
     private fun loadApps() {
         allApps.clear()
         allApps.addAll(AppCatalog.collectLaunchableApps(this))
-        workspaceGrid.adapter = AppGridAdapter(this, allApps)
+        adapter.submitList(allApps.toList())
     }
 
     // ------------------------------------------------------------------
@@ -89,7 +106,6 @@ class MainActivity : Activity() {
 
     private fun initHotseat() {
         hotseatContainer = findViewById(R.id.hotseat)
-        hotseatContainer.removeAllViews()
         refreshHotseat()
     }
 
@@ -113,13 +129,8 @@ class MainActivity : Activity() {
 
         val row = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            gravity = Gravity.CENTER
-            setPadding(
-                (4 * density).toInt(),
-                (4 * density).toInt(),
-                (4 * density).toInt(),
-                (4 * density).toInt()
-            )
+            gravity = android.view.Gravity.CENTER
+            setPadding((4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt())
         }
 
         val icon = ImageView(this).apply {
@@ -140,13 +151,8 @@ class MainActivity : Activity() {
 
         val row = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            gravity = Gravity.CENTER
-            setPadding(
-                (4 * density).toInt(),
-                (4 * density).toInt(),
-                (4 * density).toInt(),
-                (4 * density).toInt()
-            )
+            gravity = android.view.Gravity.CENTER
+            setPadding((4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt())
         }
 
         val icon = ImageView(this).apply {
@@ -156,6 +162,7 @@ class MainActivity : Activity() {
         icon.setImageDrawable(app.activityInfo?.loadIcon(packageManager))
 
         row.setOnClickListener { launchApp(app) }
+        row.setOnLongClickListener { toggleFavorite(app); true }
         row.addView(icon)
 
         return row
@@ -179,11 +186,7 @@ class MainActivity : Activity() {
 
     private fun toggleFavorite(key: String) {
         val updated = favorites.toMutableSet()
-        if (key in updated) {
-            updated.remove(key)
-        } else {
-            updated.add(key)
-        }
+        if (key in updated) updated.remove(key) else updated.add(key)
         favorites.clear()
         favorites.addAll(updated)
         prefs.edit().putStringSet(KEY_FAVORITES, updated).apply()
@@ -210,14 +213,25 @@ class MainActivity : Activity() {
         }
     }
 
-    private fun launchComponent(key: String) {
-        val parts = key.split("/")
-        if (parts.size < 2) return
-        val intent = Intent(Intent.ACTION_MAIN, null).addCategory(Intent.CATEGORY_LAUNCHER).setComponent(ComponentName(parts[0], parts[1]))
-        try {
-            startActivity(intent)
-        } catch (e: ActivityNotFoundException) {
-            // App non più installabile
+    // ------------------------------------------------------------------
+    // Swipe gesture → open drawer
+    // ------------------------------------------------------------------
+
+    private fun initGestureDetector() {
+        gestureDetector = GestureDetector(this, object : GestureDetector.SimpleOnGestureListener() {
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent, velocityX: Float, velocityY: Float): Boolean {
+                if (e1 == null) return false
+                val deltaY = e2.y - e1.y
+                if (deltaY < -100 && Math.abs(velocityY) > 100) {
+                    startActivity(Intent(this@MainActivity, AllAppsActivity::class.java))
+                    return true
+                }
+                return false
+            }
+        })
+        findViewById<View>(R.id.root_layout).setOnTouchListener { _, event ->
+            gestureDetector.onTouchEvent(event)
+            false
         }
     }
 

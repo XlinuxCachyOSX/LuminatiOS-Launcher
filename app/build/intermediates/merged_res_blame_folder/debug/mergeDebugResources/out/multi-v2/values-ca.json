@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.luminati.launcher.app-mergeDebugResources-5:/values-ca/values-ca.xml",
+            "outputFile": "com.luminati.launcher.app-mergeDebugResources-6:/values-ca/values-ca.xml",
             "map": [
                 {
                     "source": "/home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/res/values-ca/values-ca.xml",

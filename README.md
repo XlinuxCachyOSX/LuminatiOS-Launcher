@@ -4,23 +4,14 @@ Launcher Android personalizzato, realizzato come fork moderno dello stile di **L
 
 ## Funzionalità
 
-- **Home screen** con griglia scorrevole (4 colonne) delle app installate che dichiarano `MAIN` + `CATEGORY_LAUNCHER`.
-- **Hotseat** in basso con le app preferite dell'utente (persistite in `SharedPreferences`).
-- **Drawer** ("Tutte le app") con la griglia completa delle app installate.
-- **Interazione**: tap su un'icona avvia l'app; long-press aggiunge/rimuove l'app dal hotseat.
-- **UI immersive**: status bar e navigazione bar nascoste (transizione con swipe).
-
-## Aggiunte recenti
-
-- **Quick Settings tile** personalizzato (`LuminatiOSTileService`) con azione `QS_TILE`,
-  permissione `BIND_QUICK_SETTINGS_TILE`, meta-data `@xml/luminati_tile` e stato `ACTIVE`.
-- **Widget** (`LuminatiOSWidgetProvider`) con layout `@layout/luminati_widget`, aggiornamento via
-  `AppWidgetManager.updateAppWidget` e click (`PendingIntent` → `MainActivity`).
-
-## Smooth
-
-- Animazione di entrata (fade + scale) per le icone della workspace (`AppGridAdapter`).
-- Animazione fade-in per le icone dell'hotseat (`MainActivity`).
+- **Home screen** con `RecyclerView` + `GridLayoutManager` (4 colonne) scorrevole e fluida.
+- **Wallpaper di sistema** come sfondo della home.
+- **Hotseat** con app preferite persistenti (long-press per aggiungere/rimuovere).
+- **Drawer** ("Tutte le app") con griglia completa + **ricerca live**.
+- **Smooth**: `DefaultItemAnimator`, `DiffUtil`, `setHasStableIds`, cache icone (`LruCache`).
+- **UI immersive**: status bar e navigazione trasparenti, wallpaper dietro le barre.
+- **Gesti**: swipe verso l'alto per aprire il drawer.
+- **Query manifest** per visibilità app su Android 11+.
 
 ## Build
 
@@ -28,21 +19,28 @@ Launcher Android personalizzato, realizzato come fork moderno dello stile di **L
 ./gradlew assembleDebug
 ```
 
-L'APK prodotto si trova in `app/build/outputs/apk/debug/app-debug.apk`.
+L'APK prodotto si trova in `app/build/outputs/apk/debug/app-debug.apk` (e anche `LuminatiOS-Launcher.apk` alla radice).
 
 ## Installazione
 
-```bash
-adb install -r app/build/outputs/apk/debug/app-debug.apk
-```
+Dal telefono: scarica l'APK → **Installa** (Auto Blocker disattivato su Samsung).
 
-L'activity dichiarata con filtro `MAIN` + `CATEGORY_LAUNCHER` viene automaticamente
-riconosciuta dal launcher manager del sistema come launcher dell'utente corrente.
+Link diretto:
+```
+https://github.com/XlinuxCachyOSX/LuminatiOS-Launcher/raw/main/LuminatiOS-Launcher.apk
+```
 
 ## Tecnologie
 
 - Android (compileSdk 37, targetSdk 37, minSdk 26)
 - Kotlin
-- GridView per la griglia di app
+- RecyclerView + GridLayoutManager + DiffUtil
 - AndroidX Core (WindowInsets)
-- BroadcastReceiver per le conferme PIN (`CONFIRM_PIN_SHORTCUT` / `CONFIRM_PIN_APPWIDGET`)
+- BroadcastReceiver per le conferme PIN
+- Quick Settings tile + Widget
+
+## Aggiunte
+
+- **Quick Settings tile** personalizzato (`LuminatiOSTileService`)
+- **Widget** (`LuminatiOSWidgetProvider`)
+- **Animazioni smooth** (fade + scale su entrata, fade-in hotseat)

@@ -1,4 +1,4 @@
-#Sat Oct 31 08:43:46 CET 2026
+#Sat Oct 31 09:31:27 CET 2026
 base.0=/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
 base.1=/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
 base.2=/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex

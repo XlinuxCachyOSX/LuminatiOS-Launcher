@@ -7,36 +7,39 @@ import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ResolveInfo
 import android.os.Bundle
-import android.widget.GridView
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
+import android.widget.EditText
+import android.widget.ImageButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.DefaultItemAnimator
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.luminati.launcher.R
 
 class AllAppsActivity : Activity() {
 
-    private lateinit var gridView: GridView
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchView: EditText
+    private lateinit var adapter: AppAdapter
 
     private val allApps = mutableListOf<ResolveInfo>()
-    private val favorites = mutableSetOf<String>()
     private val prefs by lazy { getSharedPreferences(MainActivity.PREFS_NAME, MODE_PRIVATE) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_all_apps)
         initImmersiveSystemUi()
-        initWorkspace()
+        initViews()
         loadApps()
-        loadFavorites()
     }
 
     override fun onResume() {
         super.onResume()
-        loadFavorites()
+        loadApps()
     }
-
-    // ------------------------------------------------------------------
-    // System UI
-    // ------------------------------------------------------------------
 
     private fun initImmersiveSystemUi() {
         val decorView = window?.decorView ?: return
@@ -47,71 +50,60 @@ class AllAppsActivity : Activity() {
         }
     }
 
-    // ------------------------------------------------------------------
-    // Workspace
-    // ------------------------------------------------------------------
+    private fun initViews() {
+        recyclerView = findViewById(R.id.all_apps)
+        searchView = findViewById(R.id.search)
 
-    private fun initWorkspace() {
-        gridView = findViewById(R.id.all_apps)
-        gridView.numColumns = 4
-        gridView.stretchMode = GridView.STRETCH_COLUMN_WIDTH
-        gridView.columnWidth = computeColumnWidth()
-    }
+        adapter = AppAdapter(this, ::launchApp, ::toggleFavorite)
+        recyclerView.layoutManager = GridLayoutManager(this, 4)
+        recyclerView.adapter = adapter
+        recyclerView.itemAnimator = DefaultItemAnimator()
+        recyclerView.setHasFixedSize(true)
+        recyclerView.setItemViewCacheSize(20)
 
-    private fun computeColumnWidth(): Int {
-        val density = resources.displayMetrics.density
-        val availableWidth = resources.displayMetrics.widthPixels - 16 * density
-        return (availableWidth / 4).toInt()
+        searchView.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                filterApps(s?.toString().orEmpty())
+            }
+            override fun afterTextChanged(s: Editable?) {}
+        })
+
+        findViewById<ImageButton>(R.id.back_button)?.setOnClickListener { finish() }
     }
 
     private fun loadApps() {
         allApps.clear()
         allApps.addAll(AppCatalog.collectLaunchableApps(this))
-        gridView.adapter = AppGridAdapter(this, allApps, ::launchApp)
-        gridView.setOnItemClickListener { _, _, position, _ ->
-            launchApp(allApps[position])
-        }
-        gridView.setOnItemLongClickListener { _, _, position, _ ->
-            toggleFavorite(allApps[position])
-            true
-        }
+        filterApps(searchView.text.toString())
     }
 
-    // ------------------------------------------------------------------
-    // Favorites
-    // ------------------------------------------------------------------
-
-    private fun loadFavorites() {
-        favorites.clear()
-        favorites.addAll(prefs.getStringSet(MainActivity.KEY_FAVORITES, emptySet()).orEmpty())
-    }
-
-    private fun toggleFavorite(app: ResolveInfo) {
-        val info = app.activityInfo ?: return
-        val key = ComponentName(info.packageName, info.name).flattenToString()
-        val updated = favorites.toMutableSet()
-        if (key in updated) {
-            updated.remove(key)
+    private fun filterApps(query: String) {
+        val q = query.trim().lowercase()
+        val filtered = if (q.isEmpty()) {
+            allApps.toList()
         } else {
-            updated.add(key)
+            allApps.filter { app ->
+                app.activityInfo?.loadLabel(packageManager)?.toString()?.lowercase()?.contains(q) == true
+            }
         }
-        favorites.clear()
-        favorites.addAll(updated)
-        prefs.edit().putStringSet(MainActivity.KEY_FAVORITES, updated).apply()
+        adapter.submitList(filtered)
     }
-
-    // ------------------------------------------------------------------
-    // Launch
-    // ------------------------------------------------------------------
 
     private fun launchApp(app: ResolveInfo) {
-        val intent = Intent(Intent.ACTION_MAIN, null)
-            .addCategory(Intent.CATEGORY_LAUNCHER)
-            .setPackage(app.activityInfo?.packageName)
+        val intent = Intent(Intent.ACTION_MAIN, null).addCategory(Intent.CATEGORY_LAUNCHER).setPackage(app.activityInfo?.packageName)
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
             // App non più installabile
         }
+    }
+
+    private fun toggleFavorite(app: ResolveInfo) {
+        val info = app.activityInfo ?: return
+        val key = ComponentName(info.packageName, info.name).flattenToString()
+        val updated = prefs.getStringSet(MainActivity.KEY_FAVORITES, emptySet()).orEmpty().toMutableSet()
+        if (key in updated) updated.remove(key) else updated.add(key)
+        prefs.edit().putStringSet(MainActivity.KEY_FAVORITES, updated).apply()
     }
 }

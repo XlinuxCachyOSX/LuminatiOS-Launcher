@@ -1,8 +1,8 @@
 1<?xml version="1.0" encoding="utf-8"?>
 2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
 3    package="com.luminati.launcher"
-4    android:versionCode="1"
-5    android:versionName="1.0.0" >
+4    android:versionCode="2"
+5    android:versionName="2.0.0" >
 6
 7    <uses-sdk
 7-->INJECTED
@@ -11,123 +11,138 @@
 9        android:targetSdkVersion="37" />
 9-->INJECTED
 10
-11    <permission
-11-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
-12        android:name="com.luminati.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-12-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:23:9-81
-13        android:protectionLevel="signature" />
-13-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:24:9-44
-14
-15    <uses-permission android:name="com.luminati.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-15-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:26:5-97
-15-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:26:22-94
-16
-17    <application
-17-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:4:5-55:19
-18        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-18-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:28:18-86
-19        android:debuggable="true"
-20        android:extractNativeLibs="false"
-20-->INJECTED
-21        android:icon="@mipmap/ic_launcher"
-21-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:6:9-43
-22        android:label="@string/app_name"
-22-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:5:9-41
-23        android:roundIcon="@mipmap/ic_launcher_round"
-23-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:7:9-54
-24        android:theme="@style/Theme.Luminati" >
-24-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:8:9-46
-25        <activity
-25-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:10:9-19:20
-26            android:name="com.luminati.launcher.MainActivity"
-26-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:11:13-41
-27            android:exported="true"
-27-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:12:13-36
-28            android:theme="@style/Theme.Luminati" >
-28-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:13:13-50
-29            <intent-filter>
-29-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:14:13-18:29
-30                <action android:name="android.intent.action.MAIN" />
-30-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:15:17-69
-30-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:15:25-66
-31
-32                <category android:name="android.intent.category.LAUNCHER" />
-32-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:17:17-77
-32-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:17:27-74
-33            </intent-filter>
-34        </activity>
-35        <activity
-35-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:21:9-24:53
-36            android:name="com.luminati.launcher.AllAppsActivity"
-36-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:22:13-44
-37            android:exported="false"
-37-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:23:13-37
-38            android:theme="@style/Theme.Luminati" />
-38-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:24:13-50
-39
-40        <receiver
-40-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:26:9-31:20
-41            android:name="com.luminati.launcher.PinConfirmReceiver"
-41-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:26:19-53
-42            android:exported="true" >
-42-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:26:54-77
-43            <intent-filter>
-43-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:27:13-30:29
-44                <action android:name="android.content.pm.action.CONFIRM_PIN_SHORTCUT" />
-44-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:28:17-89
-44-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:28:25-86
-45                <action android:name="android.content.pm.action.CONFIRM_PIN_APPWIDGET" />
-45-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:29:17-90
-45-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:29:25-87
-46            </intent-filter>
-47        </receiver>
+11    <!-- Visibilità delle app launcher su Android 11+ -->
+12    <queries>
+12-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:5:5-10:15
+13        <intent>
+13-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:6:9-9:18
+14            <action android:name="android.intent.action.MAIN" />
+14-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:7:13-65
+14-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:7:21-62
+15
+16            <category android:name="android.intent.category.LAUNCHER" />
+16-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:8:13-73
+16-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:8:23-70
+17        </intent>
+18    </queries>
+19
+20    <permission
+20-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
+21        android:name="com.luminati.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+21-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:23:9-81
+22        android:protectionLevel="signature" />
+22-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:24:9-44
+23
+24    <uses-permission android:name="com.luminati.launcher.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+24-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:26:5-97
+24-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:26:22-94
+25
+26    <application
+26-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:12:5-63:19
+27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+27-->[androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:28:18-86
+28        android:debuggable="true"
+29        android:extractNativeLibs="false"
+29-->INJECTED
+30        android:icon="@mipmap/ic_launcher"
+30-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:14:9-43
+31        android:label="@string/app_name"
+31-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:13:9-41
+32        android:roundIcon="@mipmap/ic_launcher_round"
+32-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:15:9-54
+33        android:theme="@style/Theme.Luminati" >
+33-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:16:9-46
+34        <activity
+34-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:18:9-27:20
+35            android:name="com.luminati.launcher.MainActivity"
+35-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:19:13-41
+36            android:exported="true"
+36-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:20:13-36
+37            android:theme="@style/Theme.Luminati" >
+37-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:21:13-50
+38            <intent-filter>
+38-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:22:13-26:29
+39                <action android:name="android.intent.action.MAIN" />
+39-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:7:13-65
+39-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:7:21-62
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:8:13-73
+41-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:8:23-70
+42            </intent-filter>
+43        </activity>
+44        <activity
+44-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:29:9-32:53
+45            android:name="com.luminati.launcher.AllAppsActivity"
+45-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:30:13-44
+46            android:exported="false"
+46-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:31:13-37
+47            android:theme="@style/Theme.Luminati" />
+47-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:32:13-50
 48
-49        <service
-49-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:33:9-43:19
-50            android:name="com.luminati.launcher.LuminatiOSTileService"
-50-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:34:13-50
-51            android:exported="true"
-51-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:35:13-36
-52            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
-52-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:36:13-77
-53            <intent-filter>
-53-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:37:13-39:29
-54                <action android:name="android.service.quicksettings.action.QS_TILE" />
-54-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:38:17-87
-54-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:38:25-84
+49        <receiver
+49-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:34:9-39:20
+50            android:name="com.luminati.launcher.PinConfirmReceiver"
+50-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:34:19-53
+51            android:exported="true" >
+51-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:34:54-77
+52            <intent-filter>
+52-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:35:13-38:29
+53                <action android:name="android.content.pm.action.CONFIRM_PIN_SHORTCUT" />
+53-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:36:17-89
+53-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:36:25-86
+54                <action android:name="android.content.pm.action.CONFIRM_PIN_APPWIDGET" />
+54-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:37:17-90
+54-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:37:25-87
 55            </intent-filter>
-56
-57            <meta-data
-57-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:40:13-42:57
-58                android:name="android.service.quicksettings.tile"
-58-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:41:17-66
-59                android:resource="@xml/luminati_tile" />
-59-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:42:17-54
-60        </service>
-61
-62        <receiver
-62-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:45:9-53:20
-63            android:name="com.luminati.launcher.LuminatiOSWidgetProvider"
-63-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:45:19-59
-64            android:exported="true" >
-64-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:45:60-83
-65            <intent-filter>
-65-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:46:13-49:29
-66                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
-66-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:47:17-84
-66-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:47:25-81
-67                <action android:name="android.appwidget.action.APPWIDGET_DELETED" />
-67-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:48:17-85
-67-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:48:25-82
-68            </intent-filter>
-69
-70            <meta-data
-70-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:50:13-52:68
-71                android:name="android.appwidget.provider"
-71-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:51:17-58
-72                android:resource="@xml/luminati_widget_provider" />
-72-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:52:17-65
-73        </receiver>
-74    </application>
-75
-76</manifest>
+56        </receiver>
+57
+58        <service
+58-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:41:9-51:19
+59            android:name="com.luminati.launcher.LuminatiOSTileService"
+59-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:42:13-50
+60            android:exported="true"
+60-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:43:13-36
+61            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE" >
+61-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:44:13-77
+62            <intent-filter>
+62-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:45:13-47:29
+63                <action android:name="android.service.quicksettings.action.QS_TILE" />
+63-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:46:17-87
+63-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:46:25-84
+64            </intent-filter>
+65
+66            <meta-data
+66-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:48:13-50:57
+67                android:name="android.service.quicksettings.tile"
+67-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:49:17-66
+68                android:resource="@xml/luminati_tile" />
+68-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:50:17-54
+69        </service>
+70
+71        <receiver
+71-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:53:9-61:20
+72            android:name="com.luminati.launcher.LuminatiOSWidgetProvider"
+72-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:53:19-59
+73            android:exported="true" >
+73-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:53:60-83
+74            <intent-filter>
+74-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:54:13-57:29
+75                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+75-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:55:17-84
+75-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:55:25-81
+76                <action android:name="android.appwidget.action.APPWIDGET_DELETED" />
+76-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:56:17-85
+76-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:56:25-82
+77            </intent-filter>
+78
+79            <meta-data
+79-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:58:13-60:68
+80                android:name="android.appwidget.provider"
+80-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:59:17-58
+81                android:resource="@xml/luminati_widget_provider" />
+81-->/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:60:17-65
+82        </receiver>
+83    </application>
+84
+85</manifest>

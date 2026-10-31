@@ -3,8 +3,11 @@ int color launcher_primary 0x0
 int drawable ic_all_apps 0x0
 int drawable ic_launcher_foreground 0x0
 int id all_apps 0x0
+int id back_button 0x0
 int id hotseat 0x0
 int id hotseat_icon 0x0
+int id root_layout 0x0
+int id search 0x0
 int id shortcut_icon 0x0
 int id shortcut_label 0x0
 int id widget_icon 0x0
