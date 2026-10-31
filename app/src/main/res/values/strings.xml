@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">LuminatiOS</string>
+    <string name="shortcut_icon_content_description">App icon</string>
+    <string name="hotseat_icon_content_description">Hotseat app</string>
+</resources>

@@ -1,0 +1,26 @@
+R_DEF: Internal format may change without notice
+local
+color launcher_background
+color launcher_primary
+drawable ic_all_apps
+drawable ic_launcher_foreground
+id all_apps
+id hotseat
+id hotseat_icon
+id shortcut_icon
+id shortcut_label
+id widget_icon
+id workspace
+layout activity_all_apps
+layout activity_main
+layout item_hotseat
+layout item_shortcut
+layout luminati_widget
+mipmap ic_launcher
+mipmap ic_launcher_round
+string app_name
+string hotseat_icon_content_description
+string shortcut_icon_content_description
+style Theme.Luminati
+xml luminati_tile
+xml luminati_widget_provider
