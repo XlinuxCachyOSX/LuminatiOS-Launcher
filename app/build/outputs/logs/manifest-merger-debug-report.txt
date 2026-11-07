@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:2:1-65:12
-INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:2:1-65:12
-INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:2:1-65:12
-INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:2:1-65:12
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:2:1-65:12
+INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:2:1-65:12
+INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:2:1-65:12
+INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:2:1-65:12
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/3d08637591099ac49a57c05837e66ab4/transformed/recyclerview-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.0.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/67381563934862a1666b460dd06d1180/transformed/customview-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:17:1-30:12
@@ -14,124 +14,124 @@ MERGED from [androidx.interpolator:interpolator:1.0.0] /home/alessiovalli/.gradl
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/40835fc62046cf4dbe5e9749d3540348/transformed/lifecycle-runtime-2.3.1/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/a63c2854043e6a5f8be1d5c9fe2a38a7/transformed/core-runtime-2.1.0/AndroidManifest.xml:17:1-24:12
 	package
-		INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
 	android:versionName
-		INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
 	android:versionCode
-		INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
 	xmlns:android
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:2:11-69
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:2:11-69
 queries
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:5:5-10:15
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:5:5-10:15
 intent#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:6:9-9:18
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:6:9-9:18
 action#android.intent.action.MAIN
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:7:13-65
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:7:13-65
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:7:21-62
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:7:21-62
 category#android.intent.category.LAUNCHER
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:8:13-73
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:8:13-73
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:8:23-70
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:8:23-70
 application
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:12:5-63:19
-INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:12:5-63:19
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:12:5-63:19
+INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:12:5-63:19
 MERGED from [androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:28:5-89
 MERGED from [androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:28:5-89
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/9011d60f35ffcb1039224ec3e67a2d0d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/9011d60f35ffcb1039224ec3e67a2d0d/transformed/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 	android:extractNativeLibs
-		INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:13:9-41
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:13:9-41
 	android:roundIcon
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:15:9-54
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:15:9-54
 	android:icon
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:14:9-43
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:14:9-43
 	android:theme
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:16:9-46
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:16:9-46
 activity#com.luminati.launcher.MainActivity
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:18:9-27:20
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:18:9-27:20
 	android:exported
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:20:13-36
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:20:13-36
 	android:theme
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:21:13-50
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:21:13-50
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:19:13-41
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:19:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:22:13-26:29
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:22:13-26:29
 activity#com.luminati.launcher.AllAppsActivity
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:29:9-32:53
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:29:9-32:53
 	android:exported
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:31:13-37
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:31:13-37
 	android:theme
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:32:13-50
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:32:13-50
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:30:13-44
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:30:13-44
 receiver#com.luminati.launcher.PinConfirmReceiver
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:34:9-39:20
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:34:9-39:20
 	android:exported
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:34:54-77
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:34:54-77
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:34:19-53
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:34:19-53
 intent-filter#action:name:android.content.pm.action.CONFIRM_PIN_APPWIDGET+action:name:android.content.pm.action.CONFIRM_PIN_SHORTCUT
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:35:13-38:29
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:35:13-38:29
 action#android.content.pm.action.CONFIRM_PIN_SHORTCUT
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:36:17-89
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:36:17-89
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:36:25-86
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:36:25-86
 action#android.content.pm.action.CONFIRM_PIN_APPWIDGET
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:37:17-90
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:37:17-90
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:37:25-87
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:37:25-87
 service#com.luminati.launcher.LuminatiOSTileService
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:41:9-51:19
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:41:9-51:19
 	android:exported
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:43:13-36
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:43:13-36
 	android:permission
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:44:13-77
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:44:13-77
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:42:13-50
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:42:13-50
 intent-filter#action:name:android.service.quicksettings.action.QS_TILE
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:45:13-47:29
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:45:13-47:29
 action#android.service.quicksettings.action.QS_TILE
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:46:17-87
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:46:17-87
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:46:25-84
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:46:25-84
 meta-data#android.service.quicksettings.tile
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:48:13-50:57
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:48:13-50:57
 	android:resource
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:50:17-54
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:50:17-54
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:49:17-66
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:49:17-66
 receiver#com.luminati.launcher.LuminatiOSWidgetProvider
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:53:9-61:20
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:53:9-61:20
 	android:exported
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:53:60-83
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:53:60-83
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:53:19-59
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:53:19-59
 intent-filter#action:name:android.appwidget.action.APPWIDGET_DELETED+action:name:android.appwidget.action.APPWIDGET_UPDATE
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:54:13-57:29
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:54:13-57:29
 action#android.appwidget.action.APPWIDGET_UPDATE
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:55:17-84
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:55:17-84
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:55:25-81
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:55:25-81
 action#android.appwidget.action.APPWIDGET_DELETED
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:56:17-85
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:56:17-85
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:56:25-82
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:56:25-82
 meta-data#android.appwidget.provider
-ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:58:13-60:68
+ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:58:13-60:68
 	android:resource
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:60:17-65
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:60:17-65
 	android:name
-		ADDED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml:59:17-58
+		ADDED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml:59:17-58
 uses-sdk
-INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
-INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
-INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
+INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
+INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/3d08637591099ac49a57c05837e66ab4/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/3d08637591099ac49a57c05837e66ab4/transformed/recyclerview-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.customview:customview:1.0.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/67381563934862a1666b460dd06d1180/transformed/customview-1.0.0/AndroidManifest.xml:20:5-44
@@ -151,9 +151,9 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.3.1] /home/alessiovalli/.gra
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/a63c2854043e6a5f8be1d5c9fe2a38a7/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.arch.core:core-runtime:2.1.0] /home/alessiovalli/.gradle/caches/9.6.0/transforms/a63c2854043e6a5f8be1d5c9fe2a38a7/transformed/core-runtime-2.1.0/AndroidManifest.xml:20:5-22:41
 	android:targetSdkVersion
-		INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
 	android:minSdkVersion
-		INJECTED from /home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/src/main/AndroidManifest.xml
+		INJECTED from /tmp/opencode/luminati-clone/app/src/main/AndroidManifest.xml
 permission#${applicationId}.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION
 ADDED from [androidx.core:core:1.10.1] /home/alessiovalli/.gradle/caches/9.6.0/transforms/0f6170c905cb2b5a35514cbed3ed1ce2/transformed/core-1.10.1/AndroidManifest.xml:22:5-24:47
 	android:protectionLevel

@@ -1,8 +1,8 @@
-#Sat Oct 31 09:40:45 CET 2026
-base.0=/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
-base.1=/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
-base.2=/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
-base.3=/home/alessiovalli/Documenti/Progetto predefinito/LuminatiOS-Launcher/app/build/intermediates/global_synthetics_dex/debug/generateDebugGlobalSynthetics/classes.dex
+#Sat Nov 07 12:44:21 CET 2026
+base.0=/tmp/opencode/luminati-clone/app/build/intermediates/dex/debug/mergeExtDexDebug/classes.dex
+base.1=/tmp/opencode/luminati-clone/app/build/intermediates/dex/debug/mergeProjectDexDebug/0/classes.dex
+base.2=/tmp/opencode/luminati-clone/app/build/intermediates/dex/debug/mergeProjectDexDebug/11/classes.dex
+base.3=/tmp/opencode/luminati-clone/app/build/intermediates/global_synthetics_dex/debug/generateDebugGlobalSynthetics/classes.dex
 path.0=classes.dex
 path.1=0/classes.dex
 path.2=11/classes.dex

@@ -1,54 +1,50 @@
 [
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/layout_item_hotseat.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/layout/item_hotseat.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/drawable_ic_all_apps.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/drawable/ic_all_apps.xml"
+    },
+    {
+        "merged": "com.luminati.launcher.app-debug-8:/xml_luminati_widget_provider.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/xml/luminati_widget_provider.xml"
     },
     {
         "merged": "com.luminati.launcher.app-debug-8:/drawable_search_background.xml.flat",
         "source": "com.luminati.launcher.app-main-10:/drawable/search_background.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/drawable/ic_launcher_foreground.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/layout_activity_all_apps.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/layout/activity_all_apps.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/xml_luminati_tile.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/xml/luminati_tile.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/xml_luminati_tile.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/xml/luminati_tile.xml"
     },
     {
         "merged": "com.luminati.launcher.app-debug-8:/layout_activity_main.xml.flat",
         "source": "com.luminati.launcher.app-main-10:/layout/activity_main.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/layout_activity_main.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/layout/activity_main.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/layout_item_shortcut.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/layout/item_shortcut.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/layout_item_shortcut.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/layout/item_shortcut.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/mipmap-anydpi/ic_launcher_round.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/layout_luminati_widget.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/layout/luminati_widget.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/layout_luminati_widget.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/layout/luminati_widget.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/xml_luminati_widget_provider.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/xml/luminati_widget_provider.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/layout_item_hotseat.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/layout/item_hotseat.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/drawable_ic_all_apps.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/drawable/ic_all_apps.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/mipmap-anydpi/ic_launcher.xml"
     },
     {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/mipmap-anydpi/ic_launcher_round.xml"
-    },
-    {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/layout_activity_all_apps.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/layout/activity_all_apps.xml"
-    },
-    {
-        "merged": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-debug-8:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "/home/alessiovalli/.gradle/daemon/9.6.0/com.luminati.launcher.app-main-10:/mipmap-anydpi/ic_launcher.xml"
+        "merged": "com.luminati.launcher.app-debug-8:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.luminati.launcher.app-main-10:/drawable/ic_launcher_foreground.xml"
     }
 ]
