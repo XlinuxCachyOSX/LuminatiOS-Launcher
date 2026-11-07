@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="launcher_background">#FF0F0F14</color>
+    <color name="launcher_accent">#FF00D9FF</color>
+    <color name="launcher_background">#FF0D0D1A</color>
+    <color name="launcher_empty">#AAFFFFFF</color>
+    <color name="launcher_hotseat">#80000000</color>
     <color name="launcher_primary">#FF7C3AED</color>
+    <color name="launcher_search_bg">#33FFFFFF</color>
+    <color name="launcher_search_border">#22FFFFFF</color>
+    <color name="launcher_surface">#FF1A1A2E</color>
+    <color name="launcher_text">#FFFFFFFF</color>
+    <color name="launcher_text_secondary">#CCFFFFFF</color>
     <string name="app_name">LuminatiOS</string>
     <string name="hotseat_icon_content_description">Hotseat app</string>
     <string name="shortcut_icon_content_description">App icon</string>

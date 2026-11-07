@@ -1,22 +1,27 @@
 package com.luminati.launcher
 
 import android.app.Activity
+import android.app.role.RoleManager
 import android.content.ActivityNotFoundException
 import android.content.ComponentName
 import android.content.Intent
 import android.content.SharedPreferences
 import android.content.pm.ResolveInfo
 import android.graphics.Color
-import android.graphics.drawable.Drawable
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.GestureDetector
+import android.view.Gravity
 import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.PopupMenu
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.DefaultItemAnimator
@@ -31,7 +36,9 @@ class MainActivity : Activity() {
     private lateinit var hotseatContainer: LinearLayout
     private lateinit var adapter: AppAdapter
     private lateinit var clockText: TextView
+    private lateinit var dateText: TextView
     private lateinit var searchText: TextView
+    private lateinit var rootLayout: View
 
     private val allApps = mutableListOf<ResolveInfo>()
     private val favorites = mutableSetOf<String>()
@@ -39,10 +46,17 @@ class MainActivity : Activity() {
     private val clockHandler = Handler(Looper.getMainLooper())
     private lateinit var gestureDetector: GestureDetector
 
+    companion object {
+        const val REQUEST_HOME_ROLE = 1001
+        const val PREFS_NAME = "luminati_prefs"
+        const val KEY_FAVORITES = "favorites"
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         try {
+            setContentView(R.layout.activity_main)
             initImmersiveSystemUi()
             setupWallpaperBackground()
             initWorkspace()
@@ -52,8 +66,15 @@ class MainActivity : Activity() {
             initGestureDetector()
             loadApps()
             loadFavorites()
+            requestDefaultLauncherRole()
         } catch (e: Exception) {
-            // Graceful degradation
+            try {
+                setContentView(R.layout.activity_main)
+                initWorkspace()
+                loadApps()
+            } catch (e2: Exception) {
+                finish()
+            }
         }
     }
 
@@ -74,6 +95,24 @@ class MainActivity : Activity() {
     }
 
     // ------------------------------------------------------------------
+    // Default Launcher Role
+    // ------------------------------------------------------------------
+
+    private fun requestDefaultLauncherRole() {
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                val roleManager = getSystemService(RoleManager::class.java)
+                if (roleManager != null && !roleManager.isRoleHeld(RoleManager.ROLE_HOME)) {
+                    val intent = roleManager.createRequestRoleIntent(RoleManager.ROLE_HOME)
+                    startActivityForResult(intent, REQUEST_HOME_ROLE)
+                }
+            }
+        } catch (e: Exception) {
+            // Ignore - role request may not be available
+        }
+    }
+
+    // ------------------------------------------------------------------
     // System UI / Wallpaper
     // ------------------------------------------------------------------
 
@@ -87,17 +126,18 @@ class MainActivity : Activity() {
     }
 
     private fun setupWallpaperBackground() {
-        val root = findViewById<View>(R.id.root_layout)
+        rootLayout = findViewById(R.id.root_layout)
         try {
             val wallpaperManager = WallpaperManager.getInstance(this)
             val wallpaper = wallpaperManager.drawable
             if (wallpaper != null) {
-                root.background = wallpaper
-                // Add scrim for readability
-                root.foreground = android.graphics.drawable.ColorDrawable(Color.argb(80, 0, 0, 0))
+                rootLayout.background = wallpaper
+                rootLayout.foreground = android.graphics.drawable.ColorDrawable(Color.argb(100, 0, 0, 0))
+            } else {
+                rootLayout.setBackgroundColor(Color.parseColor("#0d0d1a"))
             }
         } catch (e: Exception) {
-            root.setBackgroundColor(Color.parseColor("#1a1a2e"))
+            rootLayout.setBackgroundColor(Color.parseColor("#0d0d1a"))
         }
     }
 
@@ -106,14 +146,19 @@ class MainActivity : Activity() {
     // ------------------------------------------------------------------
 
     private fun initClock() {
-        clockText = findViewById(R.id.clock_text)
-        updateClock()
-        clockHandler.postDelayed(object : Runnable {
-            override fun run() {
-                updateClock()
-                clockHandler.postDelayed(this, 60000)
-            }
-        }, 60000)
+        try {
+            clockText = findViewById(R.id.clock_text)
+            dateText = findViewById(R.id.date_text)
+            updateClock()
+            clockHandler.postDelayed(object : Runnable {
+                override fun run() {
+                    updateClock()
+                    clockHandler.postDelayed(this, 60000)
+                }
+            }, 60000)
+        } catch (e: Exception) {
+            // Ignore
+        }
     }
 
     private fun updateClock() {
@@ -124,9 +169,9 @@ class MainActivity : Activity() {
             val day = cal.get(java.util.Calendar.DAY_OF_MONTH)
             val month = cal.getDisplayName(java.util.Calendar.MONTH, java.util.Calendar.SHORT, java.util.Locale.getDefault())
             clockText.text = String.format("%02d:%02d", hour, minute)
-            findViewById<TextView>(R.id.date_text)?.text = String.format("%d %s", day, month ?: "")
+            dateText.text = String.format("%d %s", day, month ?: "")
         } catch (e: Exception) {
-            // Ignore
+            clockText.text = "--:--"
         }
     }
 
@@ -137,7 +182,11 @@ class MainActivity : Activity() {
     private fun initSearch() {
         searchText = findViewById(R.id.search_text)
         searchText.setOnClickListener {
-            startActivity(Intent(this, AllAppsActivity::class.java))
+            try {
+                startActivity(Intent(this, AllAppsActivity::class.java))
+            } catch (e: Exception) {
+                // Ignore
+            }
         }
     }
 
@@ -147,7 +196,7 @@ class MainActivity : Activity() {
 
     private fun initWorkspace() {
         workspaceRecycler = findViewById(R.id.workspace)
-        adapter = AppAdapter(this, ::launchApp, ::toggleFavorite)
+        adapter = AppAdapter(this, ::launchApp, ::showAppContextMenu)
         workspaceRecycler.layoutManager = GridLayoutManager(this, 4)
         workspaceRecycler.adapter = adapter
         workspaceRecycler.itemAnimator = DefaultItemAnimator()
@@ -160,8 +209,22 @@ class MainActivity : Activity() {
             allApps.clear()
             allApps.addAll(AppCatalog.collectLaunchableApps(this))
             adapter.submitList(allApps.toList())
+            val emptyState = findViewById<TextView>(R.id.empty_state)
+            if (allApps.isEmpty()) {
+                workspaceRecycler.visibility = View.GONE
+                emptyState.visibility = View.VISIBLE
+            } else {
+                workspaceRecycler.visibility = View.VISIBLE
+                emptyState.visibility = View.GONE
+            }
         } catch (e: Exception) {
             // Show empty state
+            try {
+                workspaceRecycler.visibility = View.GONE
+                findViewById<TextView>(R.id.empty_state).visibility = View.VISIBLE
+            } catch (e2: Exception) {
+                // Ignore
+            }
         }
     }
 
@@ -176,13 +239,24 @@ class MainActivity : Activity() {
 
     private fun refreshHotseat() {
         hotseatContainer.removeAllViews()
-        for (key in favorites) {
-            val app = findApp(key)
-            if (app != null) {
+        if (favorites.isEmpty()) {
+            // Show default apps in hotseat
+            val defaultApps = allApps.take(4)
+            for (app in defaultApps) {
                 val row = createHotseatIcon(app)
                 hotseatContainer.addView(row)
                 row.alpha = 0f
                 row.animate().alpha(1f).setDuration(200).start()
+            }
+        } else {
+            for (key in favorites) {
+                val app = findApp(key)
+                if (app != null) {
+                    val row = createHotseatIcon(app)
+                    hotseatContainer.addView(row)
+                    row.alpha = 0f
+                    row.animate().alpha(1f).setDuration(200).start()
+                }
             }
         }
     }
@@ -193,7 +267,7 @@ class MainActivity : Activity() {
 
         val row = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
-            gravity = android.view.Gravity.CENTER
+            gravity = Gravity.CENTER
             setPadding((4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt(), (4 * density).toInt())
         }
 
@@ -208,7 +282,34 @@ class MainActivity : Activity() {
         }
 
         row.setOnClickListener { launchApp(app) }
-        row.setOnLongClickListener { toggleFavorite(app); true }
+        row.setOnLongClickListener {
+            try {
+                val popup = PopupMenu(this, row)
+                val label = app.activityInfo?.loadLabel(packageManager)?.toString() ?: "App"
+                popup.menu.add(0, 1, 0, "Apri $label")
+                popup.menu.add(0, 2, 1, "Info app")
+                popup.menu.add(0, 3, 2, "Disinstalla")
+                val key = appKey(app)
+                if (key in favorites) {
+                    popup.menu.add(0, 4, 3, "Rimuovi dai preferiti")
+                } else {
+                    popup.menu.add(0, 4, 3, "Aggiungi ai preferiti")
+                }
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        1 -> launchApp(app)
+                        2 -> openAppInfo(app)
+                        3 -> uninstallApp(app)
+                        4 -> toggleFavorite(app)
+                    }
+                    true
+                }
+                popup.show()
+            } catch (e: Exception) {
+                // Ignore
+            }
+            true
+        }
         row.addView(icon)
 
         return row
@@ -264,6 +365,59 @@ class MainActivity : Activity() {
     }
 
     // ------------------------------------------------------------------
+    // Context Menu Actions
+    // ------------------------------------------------------------------
+
+    private fun showAppContextMenu(app: ResolveInfo) {
+        try {
+            val anchor = findViewById<View>(R.id.workspace) ?: return
+            val popup = PopupMenu(this, anchor)
+            val label = app.activityInfo?.loadLabel(packageManager)?.toString() ?: "App"
+            popup.menu.add(0, 1, 0, "Apri $label")
+            popup.menu.add(0, 2, 1, "Info app")
+            popup.menu.add(0, 3, 2, "Disinstalla")
+            val key = appKey(app)
+            if (key in favorites) {
+                popup.menu.add(0, 4, 3, "Rimuovi dai preferiti")
+            } else {
+                popup.menu.add(0, 4, 3, "Aggiungi ai preferiti")
+            }
+            popup.setOnMenuItemClickListener { item ->
+                when (item.itemId) {
+                    1 -> launchApp(app)
+                    2 -> openAppInfo(app)
+                    3 -> uninstallApp(app)
+                    4 -> toggleFavorite(app)
+                }
+                true
+            }
+            popup.show()
+        } catch (e: Exception) {
+            // Ignore
+        }
+    }
+
+    private fun openAppInfo(app: ResolveInfo) {
+        try {
+            val intent = Intent(android.provider.Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+            intent.data = Uri.parse("package:${app.activityInfo?.packageName}")
+            startActivity(intent)
+        } catch (e: Exception) {
+            // Ignore
+        }
+    }
+
+    private fun uninstallApp(app: ResolveInfo) {
+        try {
+            val intent = Intent(Intent.ACTION_DELETE)
+            intent.data = Uri.parse("package:${app.activityInfo?.packageName}")
+            startActivity(intent)
+        } catch (e: Exception) {
+            // Ignore
+        }
+    }
+
+    // ------------------------------------------------------------------
     // Swipe gesture → open drawer
     // ------------------------------------------------------------------
 
@@ -285,8 +439,5 @@ class MainActivity : Activity() {
         }
     }
 
-    companion object {
-        const val PREFS_NAME = "luminati_prefs"
-        const val KEY_FAVORITES = "favorites"
-    }
+    // End of class
 }

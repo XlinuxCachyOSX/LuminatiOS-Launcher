@@ -73,6 +73,18 @@
             android:paddingBottom="8dp"
             android:scrollbars="none" />
 
+        <!-- Empty state -->
+        <TextView
+            android:id="@+id/empty_state"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Nessuna app trovata"
+            android:textColor="@color/launcher_empty"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
         <!-- Hotseat -->
         <LinearLayout
             android:id="@+id/hotseat"

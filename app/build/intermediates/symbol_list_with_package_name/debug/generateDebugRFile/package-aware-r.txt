@@ -1,6 +1,14 @@
 com.luminati.launcher
+color launcher_accent
 color launcher_background
+color launcher_empty
+color launcher_hotseat
 color launcher_primary
+color launcher_search_bg
+color launcher_search_border
+color launcher_surface
+color launcher_text
+color launcher_text_secondary
 drawable ic_all_apps
 drawable ic_launcher_foreground
 drawable search_background
@@ -8,6 +16,7 @@ id all_apps
 id back_button
 id clock_text
 id date_text
+id empty_state
 id hotseat
 id hotseat_icon
 id root_layout
